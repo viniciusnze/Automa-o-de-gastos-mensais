@@ -1,0 +1,88 @@
+public class AutomaGastos {
+
+  
+
+
+    public static void main(String[] args) {
+
+       
+        String[] descricoes = {
+            "IFOOD RESTAURANTE XYZ",
+            "UBER TRIP",
+            "SUPERMERCADO PAO DE ACUCAR",
+            "NETFLIX.COM",
+            "POSTO IPIRANGA",
+            "FARMACIA SAO JOAO",
+            "99 APP",
+            "AMAZON MARKETPLACE",
+            "ALUGUEL IMOVEL",
+            "CINEMARK SHOPPING"
+        };
+
+        double[] valores = {
+            45.90, 18.50, 230.45, 39.90, 150.00,
+            67.30, 22.00, 89.99, 1200.00, 60.00
+        };
+
+       
+        double totalAlimentacao = 0;
+        double totalTransporte = 0;
+        double totalMercado = 0;
+        double totalAssinaturas = 0;
+        double totalSaude = 0;
+        double totalMoradia = 0;
+        double totalLazer = 0;
+        double totalOutros = 0;
+
+        System.out.println("=== Transacoes categorizadas ===\n");
+
+        for (int i = 0; i < descricoes.length; i++) {
+            String descricao = descricoes[i].toUpperCase();
+            double valor = valores[i];
+            String categoria;
+
+            if (descricao.contains("IFOOD") || descricao.contains("RESTAURANTE")) {
+                categoria = "Alimentacao";
+                totalAlimentacao += valor;
+            } else if (descricao.contains("UBER") || descricao.contains("99") || descricao.contains("POSTO")) {
+                categoria = "Transporte";
+                totalTransporte += valor;
+            } else if (descricao.contains("SUPERMERCADO")) {
+                categoria = "Mercado";
+                totalMercado += valor;
+            } else if (descricao.contains("NETFLIX") || descricao.contains("SPOTIFY")) {
+                categoria = "Assinaturas";
+                totalAssinaturas += valor;
+            } else if (descricao.contains("FARMACIA")) {
+                categoria = "Saude";
+                totalSaude += valor;
+            } else if (descricao.contains("ALUGUEL") || descricao.contains("CONDOMINIO")) {
+                categoria = "Moradia";
+                totalMoradia += valor;
+            } else if (descricao.contains("CINEMARK") || descricao.contains("SHOPPING")) {
+                categoria = "Lazer";
+                totalLazer += valor;
+            } else {
+                categoria = "Outros";
+                totalOutros += valor;
+            }
+
+            System.out.printf("%-30s | %-12s | R$ %.2f%n", descricoes[i], categoria, valor);
+        }
+
+        double totalGeral = totalAlimentacao + totalTransporte + totalMercado
+                + totalAssinaturas + totalSaude + totalMoradia + totalLazer + totalOutros;
+
+        System.out.println("\n=== Resumo por categoria ===\n");
+        System.out.printf("Alimentacao   R$ %.2f%n", totalAlimentacao);
+        System.out.printf("Transporte    R$ %.2f%n", totalTransporte);
+        System.out.printf("Mercado       R$ %.2f%n", totalMercado);
+        System.out.printf("Assinaturas   R$ %.2f%n", totalAssinaturas);
+        System.out.printf("Saude         R$ %.2f%n", totalSaude);
+        System.out.printf("Moradia       R$ %.2f%n", totalMoradia);
+        System.out.printf("Lazer         R$ %.2f%n", totalLazer);
+        System.out.printf("Outros        R$ %.2f%n", totalOutros);
+        System.out.println("-----------------------------");
+        System.out.printf("TOTAL GASTO   R$ %.2f%n", totalGeral);
+    
+ 
